@@ -1,0 +1,36 @@
+{{ partial "header.html" . }}
+
+<div class="header">
+  <h1>{{ .Title }}</h1>
+  <h2>{{ .Description }}</h2>
+</div>
+<div class="content">
+  {{ .Content }}
+</div>
+
+
+<br/>
+<pre>
+{{ printf "%#v" $.Section }}
+</pre>
+
+{{ range .Site.Sections }}
+  {{ printf "%#v" . }}
+  <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{ end }}
+
+<ol  class="nav navbar-nav">
+  {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+</ol>
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+<li{{ if eq .p1 .p2 }} class="active"{{ end }}>
+  <a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
+</li>
+{{ end }}
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,68 @@
+<!-- sidebar start -->
+
+<div class="row sticky-sidebar" style="overflow-y: auto; max-height: 80%">
+  <div class="col-12" style="">
+    <h4> Sections </h4>
+    <!-- <a href="{{ .URL }}">{{ .URL }}</a> -->
+
+    {{ $scratch := newScratch }}
+    {{ $scratch.Set "sections" .Sections}}
+    {{ $currentPage := . }}
+
+    {{ if not .Sections }}
+      {{ with .Parent }}
+
+        {{ if .Sections }}
+          {{ ($scratch.Set "sections" .Sections) }}
+        {{ else }}
+          {{ $scratch.Set "sections" .Parent.Sections }}
+        {{ end }}
+
+      {{ end }}
+    {{ end }}
+
+    {{ $section := $scratch.Get "sections"}}
+
+    <ul class="section-list" style="overflow-y: auto;">
+      {{ range $section }}
+        {{ $highlight := cond (.InSection $currentPage) "font-weight: bold" ""}}
+        <li class=" text-truncate" style="{{ $highlight }}">
+          <a href="{{ .URL }}">{{ index (last 2 (split (string .URL) "/") ) 0 | title }}</a>
+          {{ if (.InSection $currentPage) }}
+            {{if .Pages}}
+            <!--
+            For when the url points to a Hugo webpage represented as a "List"
+            • Shows the pages in the list
+            -->
+            <ul class="section-list" style="overflow-y: auto; max-height:300px;">
+              {{ range .Pages }}
+              {{ $highlight := cond (eq . $currentPage) "font-weight: bold" ""}}
+              <li class=" text-truncate" style="{{ $highlight }}">
+                <a href=" {{ .URL }} ">{{ index (last 2 (split (string .URL) "/") ) 0 | title }}</a>
+              </li>
+              {{ end }}
+            </ul>
+            {{ else }}
+            <!--
+            For when the url points to a Hugo webpage represented as a "Single"
+            • Shows the pages in the list containing this page
+            -->
+            <h4> Pages </h4>
+
+            <ul class="section-list" style="overflow-y: auto; max-height:800px;">
+              {{ with .Parent }}{{/* breaks if you do `range .Parent.Pages` */}}
+              {{ range .Pages }}
+              {{ $highlight := cond (eq . $currentPage) "font-weight: bold" ""}}
+              <li class=" text-truncate" style="{{ $highlight }}">
+                <a href=" {{ .URL }} ">{{ index (last 2 (split (string .URL) "/") ) 0 | title }}</a>
+              </li>
+              {{ end }}
+              {{ end }}
+            </ul>
+            {{ end }}
+          {{ end  }}
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</div> <!-- end row -->

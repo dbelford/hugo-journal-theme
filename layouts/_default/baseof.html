@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . -}}
+  <body>
+    <div class="container-fluid dont-break-out">
+      {{- partial "header.html" . -}}
+
+      <div class ="row">
+        <div class="col-12 col-sm-2 ">
+          <div class="d-block  d-sm-none">
+            <button class="btn btn-primary" 
+              type="button" 
+              data-toggle="collapse" 
+              data-target="#collapsiblesidebar" 
+              aria-expanded="false" 
+              aria-controls="collapsiblesidebar">
+              Pages
+            </button>
+            <button class="btn btn-primary" 
+              type="button" 
+              data-toggle="collapse" 
+              data-target="#collapsible-article-nav" 
+              aria-expanded="false" 
+              aria-controls="collapsible-article-nav">
+              Sections
+            </button>
+            
+            <div class="collapse " id="collapsiblesidebar">
+              {{ partial "sidebar.html" . }}
+            </div>
+            <div class="collapse" id="collapsible-article-nav">
+              {{ .TableOfContents }}
+            </div>
+
+          </div>
+          <div class="d-none d-sm-block">
+            {{ partial "sidebar.html" . }}
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-8 " id="content">
+          {{- block "main" . }}{{- end }}
+        </div>
+        <div class="d-none d-sm-block col-12 col-sm-2">
+          <div class="sticky-articlebar">
+            {{ .TableOfContents }}
+          </div>
+        </div>
+      </div>
+      {{- partial "footer.html" . -}}
+
+    </div>
+  </body>
+</html>

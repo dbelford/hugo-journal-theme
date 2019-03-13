@@ -1,0 +1,25 @@
+<div class="row sticky-header " >
+  <div class="col-12">
+    <br/>
+
+    <ul class="list-inline" style="display: inline-block">
+      <li class="list-inline-item text-truncate"> <a href="/"> Site </a> </li>
+      {{ range .Site.Sections }}
+      <li class="list-inline-item text-truncate"><a href="{{ .URL }}">{{ .URL }}</a></li>
+          <!-- <ul>
+          {{ range .Sections }}
+            <li><a href="{{ .URL }}">{{ .URL }}</a></li>
+          {{ end }}
+        </ul> -->
+        {{ end }}
+
+    </ul>
+    {{ partial "search.html" .}}
+  </div>
+
+</div>
+<div class="col-12 search-container">
+  <ul id="search-results">
+
+  </ul>
+</div>

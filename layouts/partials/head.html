@@ -1,0 +1,78 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"  integrity="sha384-Xc1CJXitscYgtGvAiyGiYeJGEL6VJ2x6v77/VTd0HoykX00Cc/2F7ai3HuuMtgd+" 
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" 
+  integrity="sha384-iqnguDoMujGknA4B5Jk7pbSn7sb7M8Tc0zVsTNQXm629Xx00jGEpD9TsZXbfNjKO" 
+  crossorigin="anonymous"></script>
+
+
+<script src="/js/search.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title> 
+  {{ $alternate_title := replace .File.BaseFileName "-" " " | title }}
+  {{ .Title  | default $alternate_title }}
+</title>
+
+<style>
+
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1.1rem; }
+  h4 { font-size: 1.0rem; }
+  h5 { font-size: 1.0rem; }
+  h6 { font-size: 1.0rem; }
+
+  .container-fluid {
+    max-width: 1200px;
+  }
+
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+
+  #TableOfContents ul {
+    list-style-type: none;
+    padding-left: 10px;
+  }
+
+  ul.section-list {
+    padding-left: 10px;
+    list-style-type: none;
+  }
+
+  ul.task-list {
+    padding-left: 10px;
+    list-style-type: none;
+  }
+
+  .sticky-header {
+    position: sticky;
+      top: 0;
+    z-index: 1;
+    background-color: white;
+  }
+
+  .sticky-sidebar {
+    position: relative;
+  }
+
+  .sticky-articlebar {
+    position: fixed;
+  }
+  
+  .content img {
+    max-width: 100%;
+  }
+
+</style>

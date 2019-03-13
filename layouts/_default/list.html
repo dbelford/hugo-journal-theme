@@ -1,0 +1,40 @@
+{{define "main"}}
+
+
+
+        <div class="header">
+          <h1>{{ .Title }}</h1>
+          <h2>{{ .Description }}</h2>
+        </div>
+        <div class="content">
+          {{ .Content }}
+        </div>
+        <div class="list-of-pages">
+          {{ if ( gt ( len .Pages ) 0)}}
+            <!--
+            For when the url points to a Hugo webpage represented as a "List"
+            • Shows the pages in the list
+            -->
+            <h4> Pages </h4>
+            <ul>
+            {{ range .Pages }}
+              <li>
+                <a href=" {{ .URL }} ">{{.URL}}</a>
+              </li>
+            {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+
+        </div>
+<!--
+        <pre>
+        {{ printf "%#v" $.Section }}
+        {{ printf "%#v" .  }}
+        {{ printf "%#v" .Section  }}
+        {{ printf "%#v" .Sections  }}
+        {{ printf "%#v" .Site.AllPages }}
+        {{ printf "%#v" .Pages }}
+        </pre>
+      -->
+{{ end }}

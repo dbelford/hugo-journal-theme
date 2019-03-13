@@ -1,0 +1,10 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range .Site.RegularPages -}}
+  {{ $alternate_title := replace .File.BaseFileName "-" " " | title }}
+  {{ $title := .Title  | default $alternate_title }}
+  {{ $file := .File.Dir | humanize }}
+  {{ $section := index (last 3 (split (string .URL) "/") ) 0 | title }}
+  {{ $hyphenTitle := printf "%s - %s" $section $title }}
+  {{ $.Scratch.Add "index" (dict  "title" $hyphenTitle "tags" .Params.tags  "categories" .Params.categories  "contents" .Plain  "permalink" .RelPermalink "section" $section "parentSection" .Section )  }}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

@@ -1,12 +1,44 @@
 {{ define "main" }}
 
+{{ $alternate_title := replace .File.BaseFileName "-" " " | title }}
+{{ $title := .Title  | default $alternate_title }}
+{{ $file := .File.Dir | humanize }}
+{{ $section := index (last 3 (split (string .URL) "/") ) 0 | title }}
+{{ $nvALTSectionFix := replace $section "-" " " }}
+{{ $nvALTFile := printf "%s - %s.md" $nvALTSectionFix .File.BaseFileName }}
+{{ $vscode := printf "code ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $subl := printf "subl ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $nvalt := printf "open -a nvAlt ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $textedit := printf "open -a TextEdit ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $macdown := printf "open -a MacDown ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $markoff := printf "open -a Markoff ~/\"Resilio Sync/Notational Data/%s\"" $nvALTFile }}
+{{ $img := "open ~/\"Resilio Sync/Notational Data/assets/img/\"" }}
+
 
 
 <div class="header">
   <h1>{{ .Title }}</h1>
   <h2>{{ .Description }}</h2>
-</div>
 
+	<div class="dropdown show" style="float: right;">
+	  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Edit
+	  </a>
+
+	  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $img }})">Images</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $nvALTFile }})">Filename</a>  
+	  	<a class="dropdown-item" href="http://github.com/dbelford/journal/{{ $nvALTFile }}">github</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $nvalt }})">nvAlt</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $vscode }})">VSCode</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $subl }})">Sublime</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $textedit }})">TextEdit</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $macdown }})">Macdown</a>
+	  	<a class="dropdown-item" href="" onclick="copyToClipboard({{ $markoff }})">Markoff</a>
+	  	
+	  </div>
+	</div>
+</div>
 
 <div class="content">
   {{ .Content }}

@@ -1,25 +1,37 @@
 <div class="row sticky-header " >
   <div class="col-12">
     <br/>
-
-    <ul class="list-inline" style="display: inline-block">
-      <li class="list-inline-item text-truncate"> <a href="/"> Site </a> </li>
+    <!-- <div class="col-auto"> -->
+    <!-- <ul class="list-inline" style="display: inline-block"> -->
+      <!-- <li class="list-inline-item text-truncate">  -->
+        <label> <a href="/"> Site </a> </label>
+      <!-- </li> -->
       {{ range .Site.Sections }}
-      <li class="list-inline-item text-truncate"><a href="{{ .URL }}">{{ .URL }}</a></li>
+      <!-- <li class="list-inline-item text-truncate"> -->
+        &nbsp;
+        <label> <a href="{{ .URL }}">{{ .URL }}</a> </label>
+        
+      <!-- </li> -->
           <!-- <ul>
           {{ range .Sections }}
             <li><a href="{{ .URL }}">{{ .URL }}</a></li>
           {{ end }}
         </ul> -->
         {{ end }}
+    <!-- </div> -->
+    <!-- <div class="col-auto"> -->
 
-    </ul>
-    {{ partial "search.html" .}}
+    <!-- </ul> -->
+    &nbsp;
+      {{ partial "search.html" .}}
+    <!-- </div> -->
   </div>
 
 </div>
+<div class="row">
 <div class="col-12 search-container">
   <ul id="search-results">
 
   </ul>
+</div>
 </div>

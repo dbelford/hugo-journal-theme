@@ -1,0 +1,26 @@
+<div class="d-block  d-sm-none">
+  	<button class="btn btn-primary" 
+	  	type="button" 
+	  	data-toggle="collapse" 
+	  	data-target="#collapsiblesidebar" 
+	  	aria-expanded="false" 
+	  	aria-controls="collapsiblesidebar">
+	  	Pages
+	  </button>
+	  <button class="btn btn-primary" 
+	  type="button" 
+	  data-toggle="collapse" 
+	  data-target="#collapsible-article-nav" 
+	  aria-expanded="false" 
+	  aria-controls="collapsible-article-nav">
+	  Sections
+	</button>
+
+	<div class="collapse " id="collapsiblesidebar">
+		{{ partial "sidebar.html" . }}
+	</div>
+	<div class="collapse" id="collapsible-article-nav">
+		{{ .TableOfContents }}
+	</div>
+
+</div>

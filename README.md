@@ -88,3 +88,4 @@ From theme folder run
 
 - [ ] Consider adding `shortcodes` support or deleting broken `shortcodes`
 - [ ] Look for way to have hugo treat `main.md` as `_index.md`
+- [ ] Get slashes out of site nav and hyphens out of section nav (use more idiomatic hugo)

@@ -10,6 +10,7 @@ a la the current style of docs websites in 2018. [See it in action](https://jour
    - `git submodule init`
    - `git submodule update`
    - Add `theme: journal` to `config.toml`
+   - Update to new versions of theme via `git submodule update --remote`
 2. Setup search as below
 3. `hugo server` to develop locally
 4. `hugo` to build site to `public`

@@ -5,7 +5,11 @@ a la the current style of docs websites in 2018. [See it in action](https://jour
 
 # Usage
 
-1. Add theme to Hugo per Hugo docs
+1. Add theme to Hugo per Hugo [docs](https://gohugo.io/themes/installing-and-using-themes/)
+   - `git submodule add https://github.com/dbelford/hugo-journal-theme.git themes/journal`
+   - `git submodule init`
+   - `git submodule update`
+   - Add `theme: journal` to `config.toml`
 2. Setup search as below
 3. `hugo server` to develop locally
 4. `hugo` to build site to `public`

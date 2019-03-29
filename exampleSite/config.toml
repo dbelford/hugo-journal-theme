@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "A minimal Hugo website"
-theme = "hugo-theme-journal"
+theme = "hugo-journal-theme"
 themesDir = "../../"
 googleAnalytics = ""
 disqusShortname = ""

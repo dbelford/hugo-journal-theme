@@ -1,13 +1,31 @@
-{{ partial "header.html" . }}
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . -}}
+  <body>
+    <div class="container-fluid dont-break-out">
+      {{- partial "header.html" . -}}
 
-<div class="header">
-  <h1>{{ .Title }}</h1>
-  <h2>{{ .Description }}</h2>
-</div>
-<div class="content">
+      <div class ="row">
+        <div class="col-12 col-md-2 ">
+            <div class="d-block d-md-none">
+              {{ partial "mobile-navigation.html" . }}
+            </div>
+            <div class="d-none d-md-block">
+              {{ partial "sidebar.html" . }}
+            </div>
+        </div>
 
-  Could not find page
-  {{ .Content }}
-</div>
+        <div class="col-12 col-md-8 " id="content">
+         Page not found
+         {{ .Content }}
+        </div>
+        <div class="d-none d-md-block col-12 col-md-2">
+          <div class="sticky-articlebar"> {{ .TableOfContents }} </div>
+        </div>
+      </div>
+      
+      {{- partial "footer.html" . -}}
 
-{{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>

@@ -1,10 +1,10 @@
-<div class="d-block  d-sm-none">
+<div class="d-block  d-md-none">
   	<button class="btn btn-primary" 
 	  	type="button" 
 	  	data-toggle="collapse" 
-	  	data-target="#collapsiblesidebar" 
+	  	data-target="#collapsible-sidebar" 
 	  	aria-expanded="false" 
-	  	aria-controls="collapsiblesidebar">
+	  	aria-controls="collapsible-sidebar">
 	  	Pages
 	  </button>
 	  <button class="btn btn-primary" 
@@ -13,11 +13,11 @@
 	  data-target="#collapsible-article-nav" 
 	  aria-expanded="false" 
 	  aria-controls="collapsible-article-nav">
-	  Sections
+		Table of Contents
 	</button>
 
-	<div class="collapse " id="collapsiblesidebar">
-		{{ partial "sidebar.html" . }}
+	<div class="collapse " id="collapsible-sidebar">
+		{{- partial "sidebar.html" . -}}
 	</div>
 	<div class="collapse" id="collapsible-article-nav">
 		{{ .TableOfContents }}

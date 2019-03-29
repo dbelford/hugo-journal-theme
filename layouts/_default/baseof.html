@@ -6,15 +6,19 @@
       {{- partial "header.html" . -}}
 
       <div class ="row">
-        <div class="col-12 col-sm-2 ">
-            {{ partial "mobile-navigation.html" . }}
-            {{ partial "sidebar.html" . }}
+        <div class="col-12 col-md-2 ">
+            <div class="d-block d-md-none">
+              {{ partial "mobile-navigation.html" . }}
+            </div>
+            <div class="d-none d-md-block">
+              {{ partial "sidebar.html" . }}
+            </div>
         </div>
 
-        <div class="col-12 col-sm-8 " id="content">
+        <div class="col-12 col-md-8 " id="content">
           {{- block "main" . }}{{- end }}
         </div>
-        <div class="d-none d-sm-block col-12 col-sm-2">
+        <div class="d-none d-md-block col-12 col-md-2">
           <div class="sticky-articlebar"> {{ .TableOfContents }} </div>
         </div>
       </div>

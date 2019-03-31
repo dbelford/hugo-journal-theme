@@ -43,6 +43,9 @@ var templateDefinition = undefined;
 let useWorker = typeof(Worker) !== "undefined"
 
 if (useWorker) { // Yes! Web worker support!
+  // Maybe should be loading search worker here
+  // if (searchWorker == undefined) { searchWorker = new Worker('/js/search_worker.js')
+
   searchWorker.addEventListener('message', function(msg) {
     // msg.data.results
     // msg.data.searchQuery
